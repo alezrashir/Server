@@ -23,12 +23,12 @@ router.get('/', function(req, res, next) {
 
 
 
-           connection.query("SELECT * from users where username='" + queryData.username +  "'and password='" + queryData.password + "'",
+           connection.query("SELECT  fridgeid  from users where username='" + queryData.username +  "'and password='" + queryData.password + "'",
                function (err, rows, fields) {
                    if (!err) {
 
                        if (rows.length > 0) {
-                           var login = {msg: 'thanks, login info correct'}
+                           var login = {msg: rows}
                            res.send(login);
                        }
 
