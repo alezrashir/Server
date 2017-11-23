@@ -41,6 +41,24 @@ router.get('/', function(req, res, next) {
             //"SELECT actualitems.itemid ,actualvegetables.weight , actualvegetables.purchase , vegetables.expire from ((actualitems INNER JOIN actualvegetables ON   actualitems.fridgeid='" + queryData.fridgeid + "' AND actualitems.fridgeid=actualvegetables.fridgeid AND actualitems.itemid=actualvegetables.itemid)  INNER JOIN vegetables ON actualitems.iteactualitems.itemid=vegetables.itemid); " +
 
             break;
+        case "AddBarcode":
+            connection.query("INSERT INTO  actualbarkod (fridgeid, itemid,expiredate,quantity) VALUES('"+ queryData.fridgeid +"', '"+ queryData.itemid +"','"+ queryData.expiredate +"', "+1+") ON DUPLICATE KEY UPDATE quantity = quantity + 1 , expiredate = CONCAT (expiredate ,' ~ "+queryData.expiredate+"') ; INSERT INTO actualitems (fridgeid,itemid,type) VALUES('"+ queryData.fridgeid +"', '"+ queryData.itemid +"','barkod') ON DUPLICATE KEY UPDATE type='barkod';)",
+                function (err,rows1,fields1) {
+                    if(!err){
+                        var  Register= {msg: 'item added'}
+                        res.send(Register);
+
+                    }
+
+                    else{
+                        var error = {msg: 'item added'}
+                        res.send(error);
+                    }
+
+                });
+
+            break;
+
 
     }
     connection.end();
