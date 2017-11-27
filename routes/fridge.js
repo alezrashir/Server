@@ -42,7 +42,8 @@ router.get('/', function(req, res, next) {
 
             break;
         case "AddBarcode":
-            connection.query("INSERT INTO  actualbarkod (fridgeid, itemid,expiredate,quantity) VALUES('"+ queryData.fridgeid +"', '"+ queryData.itemid +"','"+ queryData.expiredate +"', "+1+") ON DUPLICATE KEY UPDATE quantity = quantity + 1 , expiredate = CONCAT (expiredate ,' ~ "+queryData.expiredate+"') ; INSERT INTO actualitems (fridgeid,itemid,type) VALUES('"+ queryData.fridgeid +"', '"+ queryData.itemid +"','barkod') ON DUPLICATE KEY UPDATE type='barkod';)",
+
+            connection.query("INSERT INTO actualitems (fridgeid,itemid,type) VALUES('"+ queryData.fridgeid +"', '"+ queryData.itemid +"','barkod') ON DUPLICATE KEY UPDATE type='barkod' ;INSERT INTO  actualbarkod (fridgeid, itemid,expiredate,quantity) VALUES('"+ queryData.fridgeid +"', '"+ queryData.itemid +"','"+ queryData.expiredate +"', "+1+") ON DUPLICATE KEY UPDATE quantity = quantity + 1 , expiredate = CONCAT (expiredate ,' "+queryData.expiredate+"') ",
                 function (err,rows1,fields1) {
                     if(!err){
                         var  Register= {msg: 'item added'}
@@ -62,9 +63,9 @@ router.get('/', function(req, res, next) {
 
 
 case "AddVegetables":
-    connection.query("INSERT INTO  actualvegetables (fridgeid, itemid,weight,purchase) VALUES ('"+
-        queryData.fridgeid +"', '"+ queryData.itemid+"',"+ queryData.weight +",'*"+queryData.weight+"* "+queryData.purchase+"') ON DUPLICATE KEY UPDATE  weight = weight + "+queryData.weight+" , purchase = CONCAT (purchase ,' ~ *"+queryData.weight+"*   "+queryData.purchase+"') ;INSERT INTO actualitems (fridgeid,itemid,type) VALUES ('"+ queryData.fridgeid +"', '"
-        + queryData.itemid +"','vegetables') ON DUPLICATE KEY UPDATE type='vegetables';)",
+    connection.query("INSERT INTO actualitems (fridgeid,itemid,type) VALUES ('"+ queryData.fridgeid +"', '" +
+                + queryData.itemid +"','vegetables') ON DUPLICATE KEY UPDATE type='vegetables';INSERT INTO  actualvegetables (fridgeid, itemid,weight,purchase) VALUES ('"+
+        queryData.fridgeid +"', '"+ queryData.itemid+"',"+ queryData.weight +",' "+queryData.weight+" "+queryData.purchase+"') ON DUPLICATE KEY UPDATE  weight = weight + "+queryData.weight+" , purchase = CONCAT (purchase ,' "+queryData.weight+" "+queryData.purchase+"')",
 function (err,rows2,fields2) {
     if(!err){
         var  Register= {msg: 'vegetable added'}

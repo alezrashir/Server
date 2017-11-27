@@ -99,8 +99,8 @@
       <file leaf-file-name="fridge.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/fridge.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="65" column="103" lean-forward="false" selection-start-line="65" selection-start-column="103" selection-end-line="65" selection-end-column="103" />
+            <state relative-caret-position="-138">
+              <caret line="67" column="271" lean-forward="false" selection-start-line="67" selection-start-column="271" selection-end-line="67" selection-end-column="271" />
               <folding />
             </state>
           </provider>
@@ -155,8 +155,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-33" />
-    <option name="y" value="325" />
+    <option name="x" value="-303" />
+    <option name="y" value="352" />
     <option name="width" value="1346" />
     <option name="height" value="433" />
   </component>
@@ -238,12 +238,12 @@
       <workItem from="1509799056960" duration="100000" />
       <workItem from="1510654931642" duration="1194000" />
       <workItem from="1511451463288" duration="6557000" />
-      <workItem from="1511772373776" duration="2939000" />
+      <workItem from="1511772373776" duration="6754000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65419000" />
+    <option name="totallyTimeSpent" value="69234000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -682,8 +682,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/fridge.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="65" column="103" lean-forward="false" selection-start-line="65" selection-start-column="103" selection-end-line="65" selection-end-column="103" />
+        <state relative-caret-position="-138">
+          <caret line="67" column="271" lean-forward="false" selection-start-line="67" selection-start-column="271" selection-end-line="67" selection-end-column="271" />
           <folding />
         </state>
       </provider>
