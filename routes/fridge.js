@@ -60,6 +60,22 @@ router.get('/', function(req, res, next) {
             break;
 
 
+
+
+    case "getvegetablesList":
+        connection.query("SELECT  itemid  from vegetables ",
+            function (err,rows1,fields1) {
+            if(!err) {
+                var list = {msg: rows1}
+                res.send(list);
+            }
+            else{
+                    var error = {msg: 'Error'}
+                    res.send(error);
+                }
+
+    });
+        break;
     }
     connection.end();
 });
