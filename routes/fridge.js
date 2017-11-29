@@ -80,7 +80,27 @@ function (err,rows2,fields2) {
 });
 
     break;
-    case "getvegetablesList":
+
+
+
+        case "RemoveItemBarcode":
+
+        connection.query("UPDATE actualbarkod SET expiredate='"+queryData.expiredate+"', quantity=quantity-1 WHERE itemid='"+queryData.itemid+"'AND fridgeid='"+queryData.fridgeid+"'; UPDATE  actualitems ai, actualbarkod ab SET ai.type = 'delete' WHERE ai.fridgeid= ab.fridgeid AND ai.itemid=ab.itemid AND ab.quantity=0 ;DELETE FROM actualbarkod WHERE actualbarkod.quantity=0  ; DELETE FROM actualitems WHERE actualitems.type='delete';",
+            function (err,rows1,fields1) {
+                if(!err){
+                    var  Register= {msg: 'item removed'}
+                    res.send(Register);
+
+                }
+
+                else{
+                    var error = {msg: 'item removed'}
+                    res.send(error);
+                }
+
+            });
+           break;
+        case "getvegetablesList":
         connection.query("SELECT  itemid  from vegetables ",
             function (err,rows1,fields1) {
             if(!err) {
