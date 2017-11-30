@@ -80,7 +80,25 @@ function (err,rows2,fields2) {
 });
 
     break;
+  //  UPDATE actualbarkod SET purchase='200 6.12.2017 250 23.12.2017', weight=450 WHERE itemid='tomatoes'AND fridgeid='66352618_D'
 
+        case "RemoveItemVegetables":
+
+            connection.query("UPDATE actualvegetables SET purchase='"+queryData.purchase+"', weight='"+queryData.weight+"' WHERE itemid='"+queryData.itemid+"'AND fridgeid='"+queryData.fridgeid+"';UPDATE  actualitems ai, actualvegetables ab SET ai.type = 'delete' WHERE ai.fridgeid= ab.fridgeid AND ai.itemid=ab.itemid AND ab.weight=0; DELETE FROM actualvegetables WHERE actualvegetables.weight=0  ; DELETE FROM actualitems WHERE actualitems.type='delete';",
+                function (err,rows1,fields1) {
+                    if(!err){
+                        var  Register= {msg: 'item removed'}
+                        res.send(Register);
+
+                    }
+
+                    else{
+                        var error = {msg: 'item removed'}
+                        res.send(error);
+                    }
+
+                });
+            break;
 
 
         case "RemoveItemBarcode":
