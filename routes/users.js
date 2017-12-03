@@ -45,6 +45,31 @@ router.get('/', function(req, res, next) {
                });
 
 break;
+        case "getUserInfo":
+
+            connection.query("SELECT  *  from users where username='" + queryData.username +  "'",
+                function (err, rows, fields) {
+                    if (!err) {
+
+                        if (rows.length > 0) {
+                            var login = {msg: rows}
+                            res.send(login);
+                        }
+
+                        else {
+                            var error = {msg: 'user is not valid'}
+                            res.send(error);
+                        }
+                    }
+                    else {
+                        var error = {msg: ' error-problem!'}
+                        res.send(error);
+                    }
+
+                });
+
+            break;
+
         case "Register":
 
 
