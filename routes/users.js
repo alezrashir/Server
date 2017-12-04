@@ -45,6 +45,18 @@ router.get('/', function(req, res, next) {
                });
 
 break;
+
+
+case "updateUser":
+    connection.query("update users SET password='"+queryData.password+"' , email='"+queryData.email+"' , phone='"+queryData.phone+"' WHERE username='"+queryData.username+"'",
+        function(err,rows2,fileds2) {
+            if(!err){
+                var Update = {msg: 'Update done'}
+                res.send(Update);
+            }
+        });
+    break;
+
         case "getUserInfo":
 
             connection.query("SELECT  *  from users where username='" + queryData.username +  "'",
