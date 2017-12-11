@@ -132,6 +132,20 @@ function (err,rows2,fields2) {
 
     });
         break;
+        case "getVegtable":
+            connection.query("Select actualvegetables.weight , actualvegetables.purchase FROM actualitems,actualvegetables where actualitems.fridgeid='"+queryData.fridgeid+"' and actualvegetables.fridgeid=actualitems.fridgeid and actualitems.itemid='"+queryData.itemid+"' and actualvegetables.itemid=actualitems.itemid",
+                function (err,rows1,fields1) {
+                    if(!err) {
+                        var list = {msg: rows1}
+                        res.send(list);
+                    }
+                    else{
+                        var error = {msg: 'Error'}
+                        res.send(error);
+                    }
+
+                });
+            break;
     }
     connection.end();
 });
