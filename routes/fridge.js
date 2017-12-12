@@ -64,7 +64,7 @@ router.get('/', function(req, res, next) {
 
 case "AddVegetables":
     connection.query("INSERT INTO actualitems (fridgeid,itemid,type) VALUES ('"+ queryData.fridgeid +"', '" + queryData.itemid +"','vegetables') ON DUPLICATE KEY UPDATE type='vegetables';INSERT INTO  actualvegetables (fridgeid, itemid,weight,purchase) VALUES ('"+
-        queryData.fridgeid +"', '"+ queryData.itemid+"',"+ queryData.weight +",' "+queryData.weight+" "+queryData.purchase+"') ON DUPLICATE KEY UPDATE  weight = weight + "+queryData.weight+" , purchase = CONCAT (purchase ,' "+queryData.weight+" "+queryData.purchase+"')",
+        queryData.fridgeid +"', '"+ queryData.itemid+"',"+ queryData.weight +",'"+queryData.purchase+"') ON DUPLICATE KEY UPDATE  weight = "+queryData.weight+" , purchase = '"+queryData.purchase+"'",
 function (err,rows2,fields2) {
     if(!err){
         var  Register= {msg: 'vegetable added'}
