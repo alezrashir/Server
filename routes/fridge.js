@@ -99,7 +99,7 @@ function (err,rows2,fields2) {
 
 
         case "showItemBarcode":
-            connection.query("select actualbarkod.expiredate , actualbarkod.quantity ,items.name,items.imagepath from actualbarkod,items WHERE actualbarkod.itemid='"+queryData.itemid+"' and actualbarkod.fridgeid='"+queryData.fridgeid+"' and actualbarkod.itemid = items.itemid",
+            connection.query("select actualbarkod.expiredate , actualbarkod.quantity, actualbarkod.itemid,items.name,items.imagepath from actualbarkod,items WHERE actualbarkod.itemid='"+queryData.itemid+"' and actualbarkod.fridgeid='"+queryData.fridgeid+"' and actualbarkod.itemid = items.itemid",
 
                 function (err,rows,fields) {
                     if(!err){
