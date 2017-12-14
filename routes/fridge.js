@@ -80,6 +80,41 @@ function (err,rows2,fields2) {
 });
 
     break;
+        case "showItemVegetables":
+            connection.query("SELECT actualvegetables.itemid, actualvegetables.weight, actualvegetables.purchase,actualvegetables.fridgeid ,items.name, items.imagepath ,vegetables.expire from actualvegetables, items,vegetables WHERE actualvegetables.itemid='"+queryData.itemid+"' AND actualvegetables.fridgeid='"+queryData.fridgeid+"' and items.itemid=actualvegetables.itemid and vegetables.itemid=actualvegetables.itemid",
+                function (err,rows1,fields1) {
+                    if(!err){
+                        var  item= {msg: rows1}
+                        res.send(item);
+
+                    }
+
+                    else{
+                        var error = {msg: ''}
+                        res.send(error);
+                    }
+
+                });
+            break;
+
+
+        case "showItemBarcode":
+            connection.query("select actualbarkod.expiredate , actualbarkod.quantity ,items.name,items.imagepath from actualbarkod,items WHERE actualbarkod.itemid='"+queryData.itemid+"' and actualbarkod.fridgeid='"+queryData.fridgeid+"' and actualbarkod.itemid = items.itemid",
+
+                function (err,rows,fields) {
+                    if(!err){
+                        var  item= {msg: rows}
+                        res.send(item);
+
+                    }
+
+                    else{
+                        var error = {msg: ''}
+                        res.send(error);
+                    }
+
+                });
+            break;
   //  UPDATE actualbarkod SET purchase='200 6.12.2017 250 23.12.2017', weight=450 WHERE itemid='tomatoes'AND fridgeid='66352618_D'
 
         case "RemoveItemVegetables":
