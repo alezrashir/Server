@@ -168,7 +168,7 @@ function (err,rows2,fields2) {
     });
         break;
         case "getVegtable":
-            connection.query("Select actualvegetables.weight , actualvegetables.purchase FROM actualitems,actualvegetables where actualitems.fridgeid='"+queryData.fridgeid+"' and actualvegetables.fridgeid=actualitems.fridgeid and actualitems.itemid='"+queryData.itemid+"' and actualvegetables.itemid=actualitems.itemid",
+            connection.query("Select actualvegetables.weight , actualvegetables.purchase,items.imagepath FROM actualitems,actualvegetables,items where actualitems.fridgeid='"+queryData.fridgeid+"' and actualvegetables.fridgeid=actualitems.fridgeid and actualitems.itemid='"+queryData.itemid+"' and actualvegetables.itemid=actualitems.itemid and items.itemid=actualitems.itemid",
                 function (err,rows1,fields1) {
                     if(!err) {
                         var list = {msg: rows1}
